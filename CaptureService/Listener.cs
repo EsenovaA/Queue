@@ -14,6 +14,7 @@ namespace CaptureService
         private const string _pathToNotSuitFolder = @"..\..\..\NotSuit";
         private const string _extension = ".zip";
 
+        // Warning: class contains only static methods
         public static void Listen(Queue queue)
         {
             while (true)
@@ -26,6 +27,8 @@ namespace CaptureService
             }
         }
 
+        // Warning: in real world applications better to use special watcher:
+        // https://stackoverflow.com/questions/15017506/using-filesystemwatcher-to-monitor-a-directory
         private static byte[] TryListen()
         {
             try

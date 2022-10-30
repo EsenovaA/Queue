@@ -10,6 +10,7 @@ namespace CaptureService
         {
             try
             {
+                // Error: Dispose isn't used
                 var queue = new Queue();
                 Listener.Listen(queue);
             }

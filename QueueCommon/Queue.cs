@@ -41,7 +41,7 @@ namespace QueueCommon
 
         public void PublishLargeMessage(byte[] message, string identifier)
         {
-            int remainingFileSize = Convert.ToInt32(message.Length);
+            int remainingFileSize = Convert.ToInt32(message.Length); // Warning: no need in this convertion
 
             bool finished = false;
             byte[] buffer;
