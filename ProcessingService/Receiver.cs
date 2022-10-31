@@ -13,22 +13,15 @@ namespace ProcessingService
     {
         private const string _logFolder = @"..\..\..\LogFolder";
 
-        private readonly Queue _queue;
-
         private List<Chunk> chunks = new List<Chunk>();
 
-        public Receiver()
+        public void Receive(Queue queue)
         {
-            _queue = new Queue();
-        }
-
-        public void Receive()
-        {
-            var consumer = new EventingBasicConsumer(_queue.Channel);
+            var consumer = new EventingBasicConsumer(queue.Channel);
 
             consumer.Received += (model, ea) => OnMessageReceived(model, ea);
 
-            _queue.Channel.BasicConsume(queue: Contracts.QueueName,
+            queue.Channel.BasicConsume(queue: Contracts.QueueName,
                                  autoAck: true,
                                  consumer: consumer);
 

@@ -9,8 +9,11 @@ namespace ProcessingService
         {
             try
             {
-                var receiver = new Receiver();
-                receiver.Receive();
+				using(var queue = new Queue())
+				{
+					var receiver = new Receiver();
+					receiver.Receive(queue);
+				}
             }
             catch (Exception ex)
             {

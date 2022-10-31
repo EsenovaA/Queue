@@ -10,8 +10,10 @@ namespace CaptureService
         {
             try
             {
-                var queue = new Queue();
-                Listener.Listen(queue);
+                using(var queue = new Queue())
+				{
+					Listener.Listen(queue);
+				}
             }
             catch (Exception ex)
             {
